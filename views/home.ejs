@@ -1,0 +1,257 @@
+<%- layout("/layout/boilerplates.ejs") %>
+
+<style>
+  /* ===== BASE STYLES ===== */
+  :root {
+    --primary: #4f46e5;
+    --primary-light: #6366f1;
+    --secondary: #6b7280;
+    --success: #10b981;
+    --info: #3b82f6;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --bg: #f9fafb;
+    --card-bg: #ffffff;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+  }
+
+  /* ===== DASHBOARD GRID ===== */
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  /* ===== CARD STYLES ===== */
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border: none;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+
+  .card-text {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* ===== BUTTON STYLES ===== */
+  .btn-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+
+  .btn-outline:hover {
+    background-color: rgba(79, 70, 229, 0.05);
+  }
+
+  /* ===== STATS SECTION ===== */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat-title {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+  }
+
+  /* ===== RECENT ACTIVITY ===== */
+  .activity {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .activity-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  /* ===== RESPONSIVE DESIGN ===== */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1.5rem;
+    }
+    
+    .dashboard {
+      grid-template-columns: 1fr;
+    }
+    
+    .btn-group {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="container">
+  <header class="header">
+    <h1>Password Manager</h1>
+  </header>
+
+  <section class="stats">
+    <div class="stat-card">
+      <p class="stat-title">Total Passwords</p>
+      <h3 class="stat-value"><%=user1 +user2%></h3>
+    </div>
+    <div class="stat-card">
+      <p class="stat-title">Media Passwords</p>
+      <h3 class="stat-value"><%=user1%></h3>
+    </div>
+    <div class="stat-card">
+      <p class="stat-title">Account Passwords</p>
+      <h3 class="stat-value"><%=user2%></h3>
+    </div>
+    <div class="stat-card">
+      <p class="stat-title">Last Updated</p>
+      <h3 class="stat-value">Today</h3>
+    </div>
+  </section>
+
+  <section class="dashboard">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Media Passwords</h5>
+        <p class="card-text">Manage all your streaming, social media, and other entertainment passwords in one secure place.</p>
+        <div class="btn-group">
+          <a href="/mediapassword/create" class="btn btn-primary">Add New</a>
+          <a href="/mediapassword" class="btn btn-outline">View All</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Account Passwords</h5>
+        <p class="card-text">Securely store and manage your banking, email, and other important account credentials.</p>
+        <div class="btn-group">
+          <a href="/accountpassword/create" class="btn btn-primary">Add New</a>
+          <a href="/accountpassword" class="btn btn-outline">View All</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Security Center</h5>
+        <p class="card-text">Check your password strength, get security alerts, and improve your online safety.</p>
+        <div class="btn-group">
+          <a href="/security" class="btn btn-primary">Check Now</a>
+          <a href="/settings" class="btn btn-outline">Settings</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="activity">
+    <h3 class="activity-title">Recent Activity</h3>
+    <p>Your recent password updates and changes will appear here.</p>
+
+    <!-- Activity feed would be populated dynamically -->
+  </section>
+</div>

@@ -1,0 +1,148 @@
+
+
+    /* Modern Table Styling */
+    .passwordTable {
+        width: 90%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    /* Table Header */
+    .passwordTable thead th {
+        background-color: #4361ee;
+        color: white;
+        padding: 1rem 1.5rem;
+        text-align: left;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.85rem;
+        position: sticky;
+        top: 0;
+    }
+    
+    /* Table Body */
+    .passwordTable tbody tr {
+        transition: all 0.2s ease;
+    }
+    
+    .passwordTable tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+    
+    .passwordTable tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+    
+    .passwordTable tbody tr:hover {
+        background-color: #e9ecef;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Table Cells */
+    .passwordTable td, .passwordTable th {
+        padding: 1.2rem 1.5rem;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: left;
+    }
+    
+    /* Password Cell - Special Styling */
+    .passwordTable td:nth-child(3) {
+        font-family: 'Courier New', monospace;
+        color: #e63946;
+        font-weight: bold;
+    }
+    
+    /* Action Buttons Container */
+    .passwordTable .action-buttons {
+        display: flex;
+        gap: 0.8rem;
+    }
+    
+    /* Button Base Styling */
+    .passwordTable button {
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    /* Edit Button */
+    .passwordTable .edit-btn {
+        background-color: #4cc9f0;
+        color: white;
+    }
+    
+    .passwordTable .edit-btn:hover {
+        background-color: #3a86ff;
+        transform: translateY(-1px);
+    }
+    
+    /* Delete Button */
+    .passwordTable .delete-btn {
+        background-color: #f72585;
+        color: white;
+    }
+    
+    .passwordTable .delete-btn:hover {
+        background-color: #d00000;
+        transform: translateY(-1px);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .passwordTable {
+            width: 100%;
+            border-radius: 0;
+        }
+        
+        .passwordTable thead {
+            display: none;
+        }
+        
+        .passwordTable tr {
+            display: block;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .passwordTable td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .passwordTable td::before {
+            content: attr(data-label);
+            font-weight: bold;
+            margin-right: 1rem;
+            color: #4361ee;
+        }
+        
+        .passwordTable .action-buttons {
+            justify-content: flex-end;
+        }
+    }
+
+
+/* form css */
+
+
+

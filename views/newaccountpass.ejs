@@ -1,0 +1,176 @@
+<%- layout("/layout/boilerplates.ejs") %>
+
+<style>
+  /* ===== BASE STYLES ===== */
+  :root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --success: #10b981;
+    --success-hover: #059669;
+    --error: #ef4444;
+    --text: #111827;
+    --text-light: #6b7280;
+    --border: #d1d5db;
+    --border-focus: #93c5fd;
+    --bg: #f9fafb;
+    --card-bg: #ffffff;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+
+  /* ===== FORM CONTAINER ===== */
+  .form-container {
+    margin-top: 3rem !important;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ===== FORM ELEMENTS ===== */
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: var(--bg);
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  }
+
+  .form-control::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+  }
+
+  /* ===== VALIDATION STATES ===== */
+  .form-control:invalid {
+    border-color: var(--border);
+  }
+
+  .form-control:invalid:focus {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+  }
+
+  .invalid-feedback {
+    display: none;
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+  }
+
+  .was-validated .form-control:invalid ~ .invalid-feedback,
+  .form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+  }
+
+  /* ===== SUBMIT BUTTON ===== */
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-size: 1rem;
+  }
+
+  .btn-success {
+    background-color: var(--success);
+    color: white;
+  }
+
+  .btn-success:hover {
+    background-color: var(--success-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  }
+
+  /* ===== RESPONSIVE DESIGN ===== */
+  @media (max-width: 768px) {
+    body {
+      padding: 1.5rem;
+    }
+    
+    .form-container {
+      padding: 1.5rem;
+    }
+    
+    .form-control {
+      padding: 0.65rem 0.9rem;
+    }
+    
+    .btn {
+      padding: 0.65rem 1.25rem;
+      width: 100%;
+    }
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .form-container {
+    animation: fadeIn 0.4s ease-out;
+  }
+</style>
+
+<div class="form-container">
+  <form action="/accountpassword" method="post" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="bankname" class="form-label">Bank Name</label>
+      <input type="text" class="form-control" name="bankname" placeholder="Enter your bank name" id="bankname" required>
+      <div class="invalid-feedback">
+        Please provide a valid bank name.
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="work" class="form-label">Work</label>
+      <input type="text" class="form-control" name="work" placeholder="Enter your work" required>
+      <div class="invalid-feedback">
+        Please provide your work.
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="text" class="form-control" name="password" placeholder="Enter your password" required>
+      <div class="invalid-feedback">
+        Please provide a valid password.
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
